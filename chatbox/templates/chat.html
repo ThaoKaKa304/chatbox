@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Room</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'chat.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'chat.css' %}">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">Chat Room</div>
+        <div class="chat-messages">
+            {% for message in messages %}
+                <div class="message">
+                    <span class="sender">{{ message.sender }}</span>
+                    <span class="text">{{ message.text }}</span>
+                    <span class="timestamp">{{ message.created_at }}</span>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="chat-input">
+            <input type="text" id="message-text">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+</body>
+</html>
